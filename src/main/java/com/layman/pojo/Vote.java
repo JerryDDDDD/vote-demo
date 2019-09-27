@@ -11,6 +11,10 @@ public class Vote implements Serializable {
 
     private Integer userCount;
 
+    private String voteTitle;
+
+    private String voteContent;
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {
@@ -45,6 +49,22 @@ public class Vote implements Serializable {
         this.userCount = userCount;
     }
 
+    public String getVoteTitle() {
+        return voteTitle;
+    }
+
+    public void setVoteTitle(String voteTitle) {
+        this.voteTitle = voteTitle == null ? null : voteTitle.trim();
+    }
+
+    public String getVoteContent() {
+        return voteContent;
+    }
+
+    public void setVoteContent(String voteContent) {
+        this.voteContent = voteContent == null ? null : voteContent.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -55,6 +75,8 @@ public class Vote implements Serializable {
         sb.append(", number=").append(number);
         sb.append(", createId=").append(createId);
         sb.append(", userCount=").append(userCount);
+        sb.append(", voteTitle=").append(voteTitle);
+        sb.append(", voteContent=").append(voteContent);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

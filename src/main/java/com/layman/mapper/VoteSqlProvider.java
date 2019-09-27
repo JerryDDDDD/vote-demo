@@ -45,6 +45,14 @@ public class VoteSqlProvider {
             sql.VALUES("user_count", "#{userCount,jdbcType=INTEGER}");
         }
         
+        if (record.getVoteTitle() != null) {
+            sql.VALUES("vote_title", "#{voteTitle,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getVoteContent() != null) {
+            sql.VALUES("vote_content", "#{voteContent,jdbcType=VARCHAR}");
+        }
+        
         return sql.toString();
     }
 
@@ -58,6 +66,8 @@ public class VoteSqlProvider {
         sql.SELECT("number");
         sql.SELECT("create_id");
         sql.SELECT("user_count");
+        sql.SELECT("vote_title");
+        sql.SELECT("vote_content");
         sql.FROM("vote");
         applyWhere(sql, example, false);
         
@@ -91,6 +101,14 @@ public class VoteSqlProvider {
             sql.SET("user_count = #{record.userCount,jdbcType=INTEGER}");
         }
         
+        if (record.getVoteTitle() != null) {
+            sql.SET("vote_title = #{record.voteTitle,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getVoteContent() != null) {
+            sql.SET("vote_content = #{record.voteContent,jdbcType=VARCHAR}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -103,6 +121,8 @@ public class VoteSqlProvider {
         sql.SET("number = #{record.number,jdbcType=VARCHAR}");
         sql.SET("create_id = #{record.createId,jdbcType=VARCHAR}");
         sql.SET("user_count = #{record.userCount,jdbcType=INTEGER}");
+        sql.SET("vote_title = #{record.voteTitle,jdbcType=VARCHAR}");
+        sql.SET("vote_content = #{record.voteContent,jdbcType=VARCHAR}");
         
         VoteExample example = (VoteExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -123,6 +143,14 @@ public class VoteSqlProvider {
         
         if (record.getUserCount() != null) {
             sql.SET("user_count = #{userCount,jdbcType=INTEGER}");
+        }
+        
+        if (record.getVoteTitle() != null) {
+            sql.SET("vote_title = #{voteTitle,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getVoteContent() != null) {
+            sql.SET("vote_content = #{voteContent,jdbcType=VARCHAR}");
         }
         
         sql.WHERE("id = #{id,jdbcType=VARCHAR}");

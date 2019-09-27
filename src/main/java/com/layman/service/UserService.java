@@ -64,7 +64,7 @@ public class UserService {
      * @Date 0:03 2019/9/22
      * @Param [code]
      **/
-    public User doLogin(WxUserLoginedInfo wxUserLoginedInfo) {
+    public String doLogin(WxUserLoginedInfo wxUserLoginedInfo) {
         Map param = new HashMap();
         param.put("appid", WX_APPID);
         param.put("secret", WX_SECRET);
@@ -80,8 +80,8 @@ public class UserService {
             this.createUser(user);
         }
         //登录流程
-        this.login(user);
-        return user;
+        String token = this.login(user);
+        return token;
     }
 
     /**
@@ -121,8 +121,8 @@ public class UserService {
      * @Date 10:30 2019/9/25
      * @Param [user]
      **/
-    public void login(User user) {
+    public String login(User user) {
         String token = jwtUtil.createJWT(user.getId(), JsonUtils.objectToJson(user));
-        CookieUtils.setCookie(httpRequest,httpResponse, "LOGIN_TOKEN", token);
+        return token;
     }
 }

@@ -7,6 +7,8 @@ import com.layman.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @ClassName UserController
  * @Description TODO
@@ -22,9 +24,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/doLogin.json")
-    public Result doLogin(WxUserLoginedInfo wxUserLoginedInfo) {
-        User user = userService.doLogin(wxUserLoginedInfo);
-        return new Result(true, 200, "成功", user);
+    @PostMapping("/doLogin.json")
+    public Result doLogin(@RequestBody WxUserLoginedInfo wxUserLoginedInfo, HttpServletRequest httpServletRequest) {
+        String header = httpServletRequest.getHeader("token");
+        System.out.println(header);
+        String token = userService.doLogin(wxUserLoginedInfo);
+        return new Result(true, 200, "成功", token);
     }
 }

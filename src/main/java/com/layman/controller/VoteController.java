@@ -1,23 +1,24 @@
 package com.layman.controller;
 
 import com.layman.entity.Result;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @ClassName TestController
+ * @ClassName VoteController
  * @Description TODO
  * @Author 叶泽文
- * @Data 2019/9/27 0:20
+ * @Data 2019/9/27 11:04
  * @Version 3.0
  **/
 @RestController
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/vote")
+public class VoteController {
 
-    @RequestMapping("/hello.json")
-    public String hello() {
-        return "hello";
+
+    @PostMapping("/create.json")
+    public Result createVote() {
+        return null;
     }
 }

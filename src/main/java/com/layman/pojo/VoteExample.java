@@ -373,6 +373,146 @@ public class VoteExample {
             addCriterion("user_count not between", value1, value2, "userCount");
             return (Criteria) this;
         }
+
+        public Criteria andVoteTitleIsNull() {
+            addCriterion("vote_title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleIsNotNull() {
+            addCriterion("vote_title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleEqualTo(String value) {
+            addCriterion("vote_title =", value, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleNotEqualTo(String value) {
+            addCriterion("vote_title <>", value, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleGreaterThan(String value) {
+            addCriterion("vote_title >", value, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("vote_title >=", value, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleLessThan(String value) {
+            addCriterion("vote_title <", value, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleLessThanOrEqualTo(String value) {
+            addCriterion("vote_title <=", value, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleLike(String value) {
+            addCriterion("vote_title like", value, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleNotLike(String value) {
+            addCriterion("vote_title not like", value, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleIn(List<String> values) {
+            addCriterion("vote_title in", values, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleNotIn(List<String> values) {
+            addCriterion("vote_title not in", values, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleBetween(String value1, String value2) {
+            addCriterion("vote_title between", value1, value2, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteTitleNotBetween(String value1, String value2) {
+            addCriterion("vote_title not between", value1, value2, "voteTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentIsNull() {
+            addCriterion("vote_content is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentIsNotNull() {
+            addCriterion("vote_content is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentEqualTo(String value) {
+            addCriterion("vote_content =", value, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentNotEqualTo(String value) {
+            addCriterion("vote_content <>", value, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentGreaterThan(String value) {
+            addCriterion("vote_content >", value, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentGreaterThanOrEqualTo(String value) {
+            addCriterion("vote_content >=", value, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentLessThan(String value) {
+            addCriterion("vote_content <", value, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentLessThanOrEqualTo(String value) {
+            addCriterion("vote_content <=", value, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentLike(String value) {
+            addCriterion("vote_content like", value, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentNotLike(String value) {
+            addCriterion("vote_content not like", value, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentIn(List<String> values) {
+            addCriterion("vote_content in", values, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentNotIn(List<String> values) {
+            addCriterion("vote_content not in", values, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentBetween(String value1, String value2) {
+            addCriterion("vote_content between", value1, value2, "voteContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andVoteContentNotBetween(String value1, String value2) {
+            addCriterion("vote_content not between", value1, value2, "voteContent");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
