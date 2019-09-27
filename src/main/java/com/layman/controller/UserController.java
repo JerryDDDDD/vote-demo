@@ -2,8 +2,8 @@ package com.layman.controller;
 
 import com.layman.entity.Result;
 import com.layman.entity.WxUserLoginedInfo;
+import com.layman.pojo.User;
 import com.layman.service.UserService;
-import com.layman.utils.WXBizDataCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +24,7 @@ public class UserController {
 
     @GetMapping("/doLogin.json")
     public Result doLogin(WxUserLoginedInfo wxUserLoginedInfo) {
-        userService.doLogin(wxUserLoginedInfo);
-        return new Result(true, 200, "成功");
+        User user = userService.doLogin(wxUserLoginedInfo);
+        return new Result(true, 200, "成功", user);
     }
 }

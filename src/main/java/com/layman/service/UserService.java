@@ -5,15 +5,17 @@ import com.layman.entity.WxUserLoginedInfo;
 import com.layman.mapper.UserMapper;
 import com.layman.pojo.User;
 import com.layman.pojo.UserExample;
-import com.layman.utils.HttpClientUtil;
-import com.layman.utils.IdWorker;
-import com.layman.utils.JsonUtils;
-import com.layman.utils.WXBizDataCrypt;
+import com.layman.utils.*;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import org.apache.http.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,16 +46,25 @@ public class UserService {
     private IdWorker idWorker;
 
     @Autowired
+    private JwtUtil jwtUtil;
+
+    @Autowired
+    private HttpServletRequest httpRequest;
+
+    @Autowired
+    private HttpServletResponse httpResponse;
+
+    @Autowired
     private UserMapper userMapper;
 
     /**
+     * @return void
      * @Author 叶泽文
      * @Description 微信小程序登录 Token_code校验
      * @Date 0:03 2019/9/22
      * @Param [code]
-     * @return void
      **/
-    public void doLogin(WxUserLoginedInfo wxUserLoginedInfo) {
+    public User doLogin(WxUserLoginedInfo wxUserLoginedInfo) {
         Map param = new HashMap();
         param.put("appid", WX_APPID);
         param.put("secret", WX_SECRET);
@@ -69,31 +80,32 @@ public class UserService {
             this.createUser(user);
         }
         //登录流程
-        System.out.println(doGet);
+        this.login(user);
+        return user;
     }
 
-    /**    
+    /**
+     * @return void
      * @Author 叶泽文
      * @Description 创建用户
      * @Date 0:54 2019/9/22
      * @Param [openId]
-     * @return void
      **/
     public void createUser(User user) {
         user.setId(idWorker.nextStringId());
         userMapper.insert(user);
     }
-    
-    /**    
+
+    /**
+     * @return void
      * @Author 叶泽文
      * @Description 根据用户openId获取用户
      * @Date 0:55 2019/9/22
      * @Param [openId]
-     * @return void
      **/
     public User getUserByOpenId(String openId) {
         UserExample example = new UserExample();
-        UserExample.Criteria  criteria = example.createCriteria();
+        UserExample.Criteria criteria = example.createCriteria();
         criteria.andOpenIdEqualTo(openId);
         List<User> users = userMapper.selectByExample(example);
         if (users.size() == 0) {
@@ -102,14 +114,15 @@ public class UserService {
         return users.get(0);
     }
 
-    /**    
+    /**
+     * @return void
      * @Author 叶泽文
      * @Description 本地服务器登录处理流程
      * @Date 10:30 2019/9/25
      * @Param [user]
-     * @return void
      **/
     public void login(User user) {
-        
+        String token = jwtUtil.createJWT(user.getId(), JsonUtils.objectToJson(user));
+        CookieUtils.setCookie(httpRequest,httpResponse, "LOGIN_TOKEN", token);
     }
 }

@@ -1,6 +1,7 @@
 package com.layman;
 
 import com.layman.utils.IdWorker;
+import com.layman.utils.JwtUtil;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,5 +25,10 @@ public class VoteDemoApplication {
     @Bean
     public IdWorker idWorker() {
         return new IdWorker(1,1);
+    }
+
+    @Bean
+    public JwtUtil jwtUtil() {
+        return new JwtUtil();
     }
 }
