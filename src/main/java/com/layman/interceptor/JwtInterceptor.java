@@ -42,7 +42,7 @@ public class JwtInterceptor implements HandlerInterceptor {
                 System.out.println(claims.get("sub"));
                 User user = JsonUtils.jsonToPojo((String) claims.get("sub"), User.class);
                 // 获取token信息中的主键
-                request.setAttribute("openId", user.getOpenId());
+                request.setAttribute("user", user);
             } catch (Exception e) {
                 // 令牌过期
                 response.setContentType("application/json;charset=UTF-8");

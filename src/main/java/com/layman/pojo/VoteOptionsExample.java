@@ -3,14 +3,14 @@ package com.layman.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OptionExample {
+public class VoteOptionsExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public OptionExample() {
+    public VoteOptionsExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -174,73 +174,73 @@ public class OptionExample {
             return (Criteria) this;
         }
 
-        public Criteria andOptionIsNull() {
-            addCriterion("option is null");
+        public Criteria andVoteOptionIsNull() {
+            addCriterion("vote_option is null");
             return (Criteria) this;
         }
 
-        public Criteria andOptionIsNotNull() {
-            addCriterion("option is not null");
+        public Criteria andVoteOptionIsNotNull() {
+            addCriterion("vote_option is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOptionEqualTo(String value) {
-            addCriterion("option =", value, "option");
+        public Criteria andVoteOptionEqualTo(String value) {
+            addCriterion("vote_option =", value, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionNotEqualTo(String value) {
-            addCriterion("option <>", value, "option");
+        public Criteria andVoteOptionNotEqualTo(String value) {
+            addCriterion("vote_option <>", value, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionGreaterThan(String value) {
-            addCriterion("option >", value, "option");
+        public Criteria andVoteOptionGreaterThan(String value) {
+            addCriterion("vote_option >", value, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionGreaterThanOrEqualTo(String value) {
-            addCriterion("option >=", value, "option");
+        public Criteria andVoteOptionGreaterThanOrEqualTo(String value) {
+            addCriterion("vote_option >=", value, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionLessThan(String value) {
-            addCriterion("option <", value, "option");
+        public Criteria andVoteOptionLessThan(String value) {
+            addCriterion("vote_option <", value, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionLessThanOrEqualTo(String value) {
-            addCriterion("option <=", value, "option");
+        public Criteria andVoteOptionLessThanOrEqualTo(String value) {
+            addCriterion("vote_option <=", value, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionLike(String value) {
-            addCriterion("option like", value, "option");
+        public Criteria andVoteOptionLike(String value) {
+            addCriterion("vote_option like", value, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionNotLike(String value) {
-            addCriterion("option not like", value, "option");
+        public Criteria andVoteOptionNotLike(String value) {
+            addCriterion("vote_option not like", value, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionIn(List<String> values) {
-            addCriterion("option in", values, "option");
+        public Criteria andVoteOptionIn(List<String> values) {
+            addCriterion("vote_option in", values, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionNotIn(List<String> values) {
-            addCriterion("option not in", values, "option");
+        public Criteria andVoteOptionNotIn(List<String> values) {
+            addCriterion("vote_option not in", values, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionBetween(String value1, String value2) {
-            addCriterion("option between", value1, value2, "option");
+        public Criteria andVoteOptionBetween(String value1, String value2) {
+            addCriterion("vote_option between", value1, value2, "voteOption");
             return (Criteria) this;
         }
 
-        public Criteria andOptionNotBetween(String value1, String value2) {
-            addCriterion("option not between", value1, value2, "option");
+        public Criteria andVoteOptionNotBetween(String value1, String value2) {
+            addCriterion("vote_option not between", value1, value2, "voteOption");
             return (Criteria) this;
         }
 

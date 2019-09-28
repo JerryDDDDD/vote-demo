@@ -2,10 +2,10 @@ package com.layman.pojo;
 
 import java.io.Serializable;
 
-public class Option implements Serializable {
+public class VoteOptions implements Serializable {
     private String id;
 
-    private String option;
+    private String voteOption;
 
     private String voteId;
 
@@ -21,12 +21,12 @@ public class Option implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getOption() {
-        return option;
+    public String getVoteOption() {
+        return voteOption;
     }
 
-    public void setOption(String option) {
-        this.option = option == null ? null : option.trim();
+    public void setVoteOption(String voteOption) {
+        this.voteOption = voteOption == null ? null : voteOption.trim();
     }
 
     public String getVoteId() {
@@ -52,7 +52,7 @@ public class Option implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", option=").append(option);
+        sb.append(", voteOption=").append(voteOption);
         sb.append(", voteId=").append(voteId);
         sb.append(", poll=").append(poll);
         sb.append(", serialVersionUID=").append(serialVersionUID);

@@ -77,7 +77,7 @@ public class UserService {
         User user = JsonUtils.jsonToPojo(info, User.class);
         if (this.getUserByOpenId(user.getOpenId()) == null) {
             // 如果openid 查不到用户 则创建新的用户
-            this.createUser(user);
+            user = this.createUser(user);
         }
         //登录流程
         String token = this.login(user);
@@ -91,9 +91,10 @@ public class UserService {
      * @Date 0:54 2019/9/22
      * @Param [openId]
      **/
-    public void createUser(User user) {
+    public User createUser(User user) {
         user.setId(idWorker.nextStringId());
         userMapper.insert(user);
+        return user;
     }
 
     /**

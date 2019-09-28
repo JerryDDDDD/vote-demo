@@ -1,40 +1,40 @@
 package com.layman.mapper;
 
-import com.layman.pojo.Option;
-import com.layman.pojo.OptionExample;
-import com.layman.pojo.OptionExample.Criteria;
-import com.layman.pojo.OptionExample.Criterion;
+import com.layman.pojo.VoteOptions;
+import com.layman.pojo.VoteOptionsExample;
+import com.layman.pojo.VoteOptionsExample.Criteria;
+import com.layman.pojo.VoteOptionsExample.Criterion;
 import org.apache.ibatis.jdbc.SQL;
 
 import java.util.List;
 import java.util.Map;
 
-public class OptionSqlProvider {
+public class VoteOptionsSqlProvider {
 
-    public String countByExample(OptionExample example) {
+    public String countByExample(VoteOptionsExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("option");
+        sql.SELECT("count(*)").FROM("vote_options");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(OptionExample example) {
+    public String deleteByExample(VoteOptionsExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("option");
+        sql.DELETE_FROM("vote_options");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String insertSelective(Option record) {
+    public String insertSelective(VoteOptions record) {
         SQL sql = new SQL();
-        sql.INSERT_INTO("option");
+        sql.INSERT_INTO("vote_options");
         
         if (record.getId() != null) {
             sql.VALUES("id", "#{id,jdbcType=VARCHAR}");
         }
         
-        if (record.getOption() != null) {
-            sql.VALUES("option", "#{option,jdbcType=VARCHAR}");
+        if (record.getVoteOption() != null) {
+            sql.VALUES("vote_option", "#{voteOption,jdbcType=VARCHAR}");
         }
         
         if (record.getVoteId() != null) {
@@ -48,17 +48,17 @@ public class OptionSqlProvider {
         return sql.toString();
     }
 
-    public String selectByExample(OptionExample example) {
+    public String selectByExample(VoteOptionsExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
             sql.SELECT_DISTINCT("id");
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("option");
+        sql.SELECT("vote_option");
         sql.SELECT("vote_id");
         sql.SELECT("poll");
-        sql.FROM("option");
+        sql.FROM("vote_options");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -69,18 +69,18 @@ public class OptionSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Option record = (Option) parameter.get("record");
-        OptionExample example = (OptionExample) parameter.get("example");
+        VoteOptions record = (VoteOptions) parameter.get("record");
+        VoteOptionsExample example = (VoteOptionsExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("option");
+        sql.UPDATE("vote_options");
         
         if (record.getId() != null) {
             sql.SET("id = #{record.id,jdbcType=VARCHAR}");
         }
         
-        if (record.getOption() != null) {
-            sql.SET("option = #{record.option,jdbcType=VARCHAR}");
+        if (record.getVoteOption() != null) {
+            sql.SET("vote_option = #{record.voteOption,jdbcType=VARCHAR}");
         }
         
         if (record.getVoteId() != null) {
@@ -97,24 +97,24 @@ public class OptionSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("option");
+        sql.UPDATE("vote_options");
         
         sql.SET("id = #{record.id,jdbcType=VARCHAR}");
-        sql.SET("option = #{record.option,jdbcType=VARCHAR}");
+        sql.SET("vote_option = #{record.voteOption,jdbcType=VARCHAR}");
         sql.SET("vote_id = #{record.voteId,jdbcType=VARCHAR}");
         sql.SET("poll = #{record.poll,jdbcType=INTEGER}");
         
-        OptionExample example = (OptionExample) parameter.get("example");
+        VoteOptionsExample example = (VoteOptionsExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Option record) {
+    public String updateByPrimaryKeySelective(VoteOptions record) {
         SQL sql = new SQL();
-        sql.UPDATE("option");
+        sql.UPDATE("vote_options");
         
-        if (record.getOption() != null) {
-            sql.SET("option = #{option,jdbcType=VARCHAR}");
+        if (record.getVoteOption() != null) {
+            sql.SET("vote_option = #{voteOption,jdbcType=VARCHAR}");
         }
         
         if (record.getVoteId() != null) {
@@ -130,7 +130,7 @@ public class OptionSqlProvider {
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, OptionExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, VoteOptionsExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

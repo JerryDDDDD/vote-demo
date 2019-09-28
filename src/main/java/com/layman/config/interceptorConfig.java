@@ -23,7 +23,8 @@ public class interceptorConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtInterceptor)
-                .addPathPatterns("/**/*.json");
+                .addPathPatterns("/**/*.json")
+        .excludePathPatterns("/**/doLogin.json");
     }
 
     @Override

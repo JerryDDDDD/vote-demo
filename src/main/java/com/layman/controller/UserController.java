@@ -27,7 +27,6 @@ public class UserController {
     @PostMapping("/doLogin.json")
     public Result doLogin(@RequestBody WxUserLoginedInfo wxUserLoginedInfo, HttpServletRequest httpServletRequest) {
         String header = httpServletRequest.getHeader("token");
-        System.out.println(header);
         String token = userService.doLogin(wxUserLoginedInfo);
         return new Result(true, 200, "成功", token);
     }
