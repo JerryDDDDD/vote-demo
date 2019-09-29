@@ -5,10 +5,7 @@ import com.layman.entity.StatusCode;
 import com.layman.service.VoteService;
 import com.layman.vo.VotePojo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -39,5 +36,22 @@ public class VoteController {
         System.out.println(votePojo);
         String voteNum = voteService.createVote(votePojo, request);
         return new Result(true, StatusCode.ok, "成功", voteNum);
+    }
+
+
+    /**    
+     * @Author 叶泽文
+     * @Description 通过num查询Vote
+     * @Date 16:57 2019/9/28
+     * @Param [num]
+     * @return com.layman.entity.Result
+     **/
+    @GetMapping("/getByNum/{num}.json")
+    public Result getVoteByNum(@PathVariable String num) {
+        VotePojo votePojo = voteService.getVoteByNum(num);
+        if (votePojo == null) {
+            return new Result(false, StatusCode.error, "失败");
+        }
+        return new Result(true, StatusCode.ok, "成功", votePojo);
     }
 }
